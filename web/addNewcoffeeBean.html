@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Coffee Beans</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        input[type="text"], input[type="number"], select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 1em;
+        }
+        .roasting-options {
+            display: none;
+        }
+        .submit-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.2em;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Add Coffee Beans</h1>
+        <form action="AddCoffeeBeanServlet" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="type">Type:</label>
+            <select id="type" name="type" required>
+                <option value="arabica">Arabica</option>
+                <option value="robusta">Robusta</option>
+                <option value="liberica">Liberica</option>
+                <option value="excelsa">Excelsa</option>
+            </select>
+
+            <label for="bean-type">Type of Beans:</label>
+            <select id="bean-type" name="bean-type" required>
+                <option value="roasted">Roasted</option>
+                <option value="ground">Ground</option>
+            </select>
+
+            <div id="roasting-options" class="roasting-options">
+                <label for="roasting">Roasting Level:</label>
+                <select id="roasting" name="roasting">
+                    <option value="mild">Mild Roasting</option>
+                    <option value="medium">Medium Roasting</option>
+                    <option value="dark">Dark Roasting</option>
+                </select>
+            </div>
+
+            <label for="price">Price (BTH):</label>
+            <input type="number" id="price" name="price" required>
+
+            <button type="submit" class="submit-btn">Add Coffee Beans</button>
+        </form>
+    </div>
+
+    <script>
+        const beanTypeSelect = document.getElementById('bean-type');
+        const roastingOptions = document.getElementById('roasting-options');
+
+        beanTypeSelect.addEventListener('change', function() {
+            if (this.value === 'roasted') {
+                roastingOptions.style.display = 'block';
+            } else {
+                roastingOptions.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
